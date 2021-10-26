@@ -1,6 +1,7 @@
-import requests
 import urllib
 from bs4 import BeautifulSoup
+
+
 
 class Ressource:
     def __init__(self, fichier):
@@ -9,15 +10,15 @@ class Ressource:
     def type(self):
     # renvoie "HTML" ou "PDF"
     #Si c'est PDF self.type="PDF" sinon "HTML"
-        if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="f":
+        if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
             return "PDF"
         else: return "HTML"
         
     def text(self):
     #renvoie le texte épuré de la page ou PDF
         #Pour un document PDF
-        if (self.type=="PDF"):
-            ...
+
+        
         # Pour un document HTML    
         elif (self.type=="HTML"):
             url = self.lien
