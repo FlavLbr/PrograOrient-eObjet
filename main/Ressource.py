@@ -6,12 +6,22 @@ import pdfplumber
 
 
 class Ressource:
+    """ 
+    Prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
+    avec la fonction type et retourne l'adresse sous forme dans texte avec la fonction text.   
+    """
+
     def __init__(self, fichier):
+        """
+        On enregistre le lien dans un self afin de l'utiliser dans les 2 fonctions
+        """
         self.lien=fichier
     
     def type(self):
-    # renvoie "HTML" ou "PDF"
-    #Si c'est PDF self.type="PDF" sinon "HTML"
+        """
+        Retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
+        variable self
+        """
         if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
             self.type="PDF"
             return "PDF"
@@ -21,16 +31,19 @@ class Ressource:
 
         
     def text(self):
-    #renvoie le texte épuré de la page ou PDF
-        #Pour un document PDF
+        """
+        Renvoi un texte épuré dans document HTML ou d'un PDF
+        """
+        
         if (self.type=="PDF"):
+            #Fonction utilisé pour un document PDF
             with pdfplumber.open(self.lien) as pdf:
                 first_page = pdf.pages[0]
                 return(first_page.extract_text())
             """ca doit imprimer que la premier page donc voir si boucle for imprime plusieurs page"""
-
-        # Pour un document HTML    
+    
         elif (self.type=="HTML"):
+            #Fonction utilisé pour un document HTML
             url = self.lien
             html = urlopen(url).read()
             soup = BeautifulSoup(html)
@@ -46,7 +59,9 @@ class Ressource:
             # On combine toutes les grosses partie pour former un document
             htmltext = '\n'.join(chunk for chunk in chunks if chunk)
             return htmltext
+
         else:
-            print("il faudrait faire la fonction type avant svp")
+            #demande à l'utilisateur d'utiliser la fonction type avant afin d'avoir une valeur au self.type
+            print("Il faudrait faire la fonction type avant svp")
             return 0
         
