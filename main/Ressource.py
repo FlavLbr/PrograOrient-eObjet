@@ -1,6 +1,8 @@
-import urllib
+from urllib.request import urlopen
+#pip install beautifulsoup4
 from bs4 import BeautifulSoup
-
+#pip install pdfplumber
+"""import pdfplumber"""
 
 
 class Ressource:
@@ -11,18 +13,26 @@ class Ressource:
     # renvoie "HTML" ou "PDF"
     #Si c'est PDF self.type="PDF" sinon "HTML"
         if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
+            self.type="PDF"
             return "PDF"
-        else: return "HTML"
+        else:
+            self.type="HTML" 
+            return "HTML"
+
         
     def text(self):
     #renvoie le texte épuré de la page ou PDF
         #Pour un document PDF
+        if (self.type=="PDF"):
+            with pdfplumber.open(self.lien) as pdf:
+                first_page = pdf.pages[0]
+                return(first_page.extract_text())
+            """ca doit imprimer que la premier page donc voir si boucle for imprime plusieurs page"""
 
-        
         # Pour un document HTML    
         elif (self.type=="HTML"):
             url = self.lien
-            html = urllib.urlopen(url).read()
+            html = urlopen(url).read()
             soup = BeautifulSoup(html)
             # On retire tous les éléments autres que le texte
             for script in soup(["script", "style"]):
