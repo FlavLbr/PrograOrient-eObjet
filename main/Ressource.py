@@ -2,7 +2,7 @@ from urllib.request import urlopen
 #pip install beautifulsoup4
 from bs4 import BeautifulSoup
 #pip install pdfplumber
-"""import pdfplumber"""
+import pdfplumber
 
 
 class Ressource:
