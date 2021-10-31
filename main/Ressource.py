@@ -13,14 +13,14 @@ class Ressource:
 
     def __init__(self, fichier):
         """
-        On enregistre le lien dans un self afin de l'utiliser dans les 2 fonctions
+        On enregistre le lien dans un self afin de l'utiliser dans les 2 fonctions.
         """
         self.lien=fichier
     
     def type(self):
         """
         Retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
-        variable self
+        variable self.
         """
         if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
             self.type="PDF"
@@ -32,7 +32,7 @@ class Ressource:
         
     def text(self):
         """
-        Renvoi un texte épuré dans document HTML ou d'un PDF
+        Renvoi un texte épuré dans document HTML ou d'un PDF.
         """
         
         if (self.type=="PDF"):
