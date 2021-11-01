@@ -10,7 +10,6 @@ class Traitement:
         une_collecte=Collecte(self.liens)
         une_collecte.run()
         self.textes=une_collecte.content()
-        return self.textes
     
     def run(self):
         #génère le résultat
@@ -18,7 +17,6 @@ class Traitement:
         for i in range(len(self.textes)):
             split=self.textes[i].split()
             self.nombre.append(len(split))
-    
 
     def show(self):
         #affiche le résultat
