@@ -1,5 +1,6 @@
 from Ressource import Ressource
 
+
 class Collecte:
     """
     Prend 2 liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 

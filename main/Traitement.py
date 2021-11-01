@@ -1,4 +1,6 @@
 from Collecte import Collecte
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 class Traitement:    
 
@@ -12,7 +14,12 @@ class Traitement:
     
     def run(self):
         #génère le résultat
+        self.nombre=[]
+        for i in range(len(self.textes)):
+            split=self.textes[i].split()
+            self.nombre.append(len(split))
     
+
     def show(self):
         #affiche le résultat
-        
+        return print(self.nombre)

@@ -16,4 +16,4 @@ print(une_collecte.content())"""
 le_traitement = Traitement()
 le_traitement.load(["C:/Users/Flavien/Desktop/certifScol.pdf","C:/Users/Flavien/Desktop/CV.pdf"])
 le_traitement.run()         
-print(le_traitement.show())
+le_traitement.show()
