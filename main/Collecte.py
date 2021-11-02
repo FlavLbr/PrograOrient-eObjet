@@ -3,7 +3,7 @@ from Ressource import Ressource
 
 class Collecte:
     """
-    Prend 2 liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 
+    Collecte prend n liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 
     et renvoie une liste de contenus sous forme d'un tableau de longueur n.
     """
 

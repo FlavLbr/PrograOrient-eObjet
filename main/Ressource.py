@@ -7,7 +7,7 @@ import pdfplumber
 
 class Ressource:
     """ 
-    Prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
+    Ressource prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
     avec la fonction type et retourne l'adresse sous forme dans texte avec la fonction text.   
     """
 
@@ -19,7 +19,7 @@ class Ressource:
     
     def type(self):
         """
-        Retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
+        On retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
         variable self.
         """
         if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
@@ -32,7 +32,7 @@ class Ressource:
         
     def text(self):
         """
-        Renvoi un texte épuré dans document HTML ou d'un PDF. Attention! Il faut faire le .type avant afin 
+        On renvoi un texte épuré dans document HTML ou d'un PDF. Attention! Il faut faire le .type avant afin 
         que le self.type soit définit
         """
         

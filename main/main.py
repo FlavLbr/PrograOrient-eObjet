@@ -14,15 +14,14 @@ print(r)"""
 une_collecte.run()                
 print(une_collecte.content())"""
 
-
+"""
 le_traitement = Traitement()
 le_traitement.load(["/users/2022ds/118005444/Bureau/pdf1.pdf", "https://math.univ-angers.fr/~jaclin/_site2022_poO19_ds1/python_objet/2022/heritage/heritage.html"])
 le_traitement.run()         
-le_traitement.show()
+le_traitement.show()"""
 
 
-"""
+
 un_prisme = Prisme('Nuage')      # crée le prisme générateur d'un nuage de mots
 un_prisme.run("/users/2022ds/118005444/Bureau/liens.txt") 
 un_prisme.show()
-"""

@@ -8,7 +8,7 @@ from Collecte import Collecte
 
 class Prisme:
     """
-    Le prisme prend un fichier txt, traite les liens présent dans le ficher et en fait un nuage de mot.
+    Prisme prend un fichier txt, traite les liens présent dans le ficher et en fait un nuage de mot.
     """
 
     def __init__(self,type):
