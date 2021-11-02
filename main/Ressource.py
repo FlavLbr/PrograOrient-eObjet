@@ -32,7 +32,8 @@ class Ressource:
         
     def text(self):
         """
-        Renvoi un texte épuré dans document HTML ou d'un PDF.
+        Renvoi un texte épuré dans document HTML ou d'un PDF. Attention! Il faut faire le .type avant afin 
+        que le self.type soit définit
         """
         
         if (self.type=="PDF"):
