@@ -1,3 +1,5 @@
+#!/bin/env python3
+
 from Ressource import Ressource
 from Collecte import Collecte
 from Traitement import Traitement

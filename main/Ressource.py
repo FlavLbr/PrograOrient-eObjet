@@ -1,3 +1,4 @@
+#!/bin/env python3
 from urllib.request import urlopen
 #pip install beautifulsoup4
 from bs4 import BeautifulSoup

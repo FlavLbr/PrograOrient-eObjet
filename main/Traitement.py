@@ -1,3 +1,4 @@
+#!/bin/env python3
 from Collecte import Collecte
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
