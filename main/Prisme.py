@@ -24,9 +24,10 @@ class Prisme:
         textes.
         """
         lien = open(fichier,"r")
-        self.liens=lien.readlines()
-        for i in range (len(self.liens)):
-                self.liens[i]=self.liens[i].replace("\n","")
+        liens=lien.readlines()
+        self.liens=[]
+        for i in liens:
+                self.liens.append(i.replace("\n",""))
         textes= Collecte(self.liens)
         textes.run()
         self.textes=textes.content()

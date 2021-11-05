@@ -19,8 +19,8 @@ class Collecte:
         On recupère les ressources des liens ou adresses et on leurs extrait le texte pertinant.
         """
         self.textes=[]
-        for i in range(len(self.liens)):
-            texte=Ressource(self.liens[i])
+        for i in self.liens:
+            texte=Ressource(i)
             texte.type()
             self.textes.append(texte.text())
 

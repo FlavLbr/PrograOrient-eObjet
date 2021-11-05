@@ -25,8 +25,8 @@ class Traitement:
         On compte le nombre de mot contenu dans chaque texte grâce à la fonction split().
         """
         self.nombre=[]
-        for i in range(len(self.textes)):
-            split=self.textes[i].split()
+        for i in self.textes:
+            split=i.split()
             self.nombre.append(len(split))
 
     def show(self):
