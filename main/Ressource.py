@@ -1,50 +1,64 @@
+#!/bin/env python3
 from urllib.request import urlopen
 #pip install beautifulsoup4
 from bs4 import BeautifulSoup
 #pip install pdfplumber
-import pdfplumber
+import requests
+from pdfminer.high_level import extract_text
+from io import BytesIO
+
 
 
 class Ressource:
     """ 
-    Prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
+    Ressource prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
     avec la fonction type et retourne l'adresse sous forme dans texte avec la fonction text.   
     """
 
-    def __init__(self, fichier):
+    def __init__(self, url):
         """
-        On enregistre le lien dans un self afin de l'utiliser dans les 2 fonctions.
+        theo ilyas et maxime lol
         """
-        self.lien=fichier
+        self.url = url
+
+        self.r = requests.get(self.url)
+        self.content_type = self.r.headers.get('content-type')
     
     def type(self):
         """
-        Retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
+        On retourne si le lien ou l'adresse est un PDF ou un document HTML et enregistre le type sur une 
         variable self.
         """
-        if self.lien[len(self.lien)-1]=="f" and self.lien[len(self.lien)-2]=="d" and self.lien[len(self.lien)-3]=="p":
-            self.type="PDF"
+        if 'application/pdf' in self.content_type:
+            self.type = "PDF"
+            self.pdf_name = self.url.split('/')[-1]
+            self.pdf_content = self.r.content
             return "PDF"
-        else:
-            self.type="HTML" 
+
+        elif 'text/html' in  self.content_type:
+            self.type = "HTML"
             return "HTML"
+            
+        else :
+            self.type = "Non supporté"
+            return "Non supporté"
 
         
     def text(self):
         """
-        Renvoi un texte épuré dans document HTML ou d'un PDF.
+        On renvoi un texte épuré dans document HTML ou d'un PDF. Attention! Il faut faire le .type avant afin 
+        que le self.type soit définit
         """
         
         if (self.type=="PDF"):
             #Fonction utilisé pour un document PDF
-            with pdfplumber.open(self.lien) as pdf:
-                first_page = pdf.pages[0]
-                return(first_page.extract_text())
-            """ca doit imprimer que la premier page donc voir si boucle for imprime plusieurs page"""
-    
+            pdf = BytesIO(self.pdf_content)
+            return extract_text(pdf)
+
+        
         elif (self.type=="HTML"):
             #Fonction utilisé pour un document HTML
-            url = self.lien
+            url = self.url
             html = urlopen(url).read()
             soup = BeautifulSoup(html)
             # On retire tous les éléments autres que le texte
@@ -60,6 +74,7 @@ class Ressource:
             htmltext = '\n'.join(chunk for chunk in chunks if chunk)
             return htmltext
 
+        elif (self.type == "Non supporté"): ... #faire une fonction erreur
         else:
             #demande à l'utilisateur d'utiliser la fonction type avant afin d'avoir une valeur au self.type
             print("Il faudrait faire la fonction type avant svp")

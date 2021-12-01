@@ -1,9 +1,10 @@
+#!/bin/env python3
 from Ressource import Ressource
 
 
 class Collecte:
     """
-    Prend 2 liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 
+    Collecte prend n liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 
     et renvoie une liste de contenus sous forme d'un tableau de longueur n.
     """
 
@@ -18,8 +19,8 @@ class Collecte:
         On recupère les ressources des liens ou adresses et on leurs extrait le texte pertinant.
         """
         self.textes=[]
-        for i in range(len(self.liens)):
-            texte=Ressource(self.liens[i])
+        for i in self.liens:
+            texte=Ressource(i)
             texte.type()
             self.textes.append(texte.text())
 
