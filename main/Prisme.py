@@ -1,4 +1,5 @@
 #!/bin/env python3
+
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import fitz
@@ -6,6 +7,8 @@ import io
 import requests
 import re
 from bs4 import BeautifulSoup as bs
+
+
 from Collecte import Collecte
 from Ressource import Ressource
 import urllib.request
@@ -108,3 +111,5 @@ class Prisme:
             
                     
                 
+
+           
