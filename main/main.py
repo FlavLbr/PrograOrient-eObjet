@@ -4,8 +4,8 @@ from Ressource import Ressource
 from Collecte import Collecte
 from Traitement import Traitement
 from Prisme import Prisme
-"""
-une_ressource = Ressource("http://www.archeonavale.org/pdf/cordeliere/test.pdf")
+
+"""une_ressource = Ressource("https://www.univ-angers.fr/fr/index.html")
 r=une_ressource.type() 
 print(r)
 r=une_ressource.text()
@@ -26,7 +26,7 @@ le_traitement.show()
 
 
 
-un_prisme = Prisme('Image')      # crée le prisme générateur d'un nuage de mots
+un_prisme = Prisme('Nuage')      # crée le prisme générateur d'un nuage de mots
 un_prisme.run("/users/2022ds/118005444/Bureau/liens.txt") 
 un_prisme.show()
 

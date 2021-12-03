@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 from pdfminer.high_level import extract_text
 from io import BytesIO
+from urllib.request import build_opener, HTTPCookieProcessor
 
 
 
@@ -59,7 +60,9 @@ class Ressource:
         elif (self.type=="HTML"):
             #Fonction utilisé pour un document HTML
             url = self.url
-            html = urlopen(url).read()
+            #html = urlopen(url).read()
+            opener = build_opener(HTTPCookieProcessor())
+            html = opener.open(url)
             soup = BeautifulSoup(html)
             # On retire tous les éléments autres que le texte
             for script in soup(["script", "style"]):
