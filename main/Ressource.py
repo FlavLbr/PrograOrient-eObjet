@@ -1,5 +1,4 @@
 #!/bin/env python3
-from urllib.request import urlopen
 #pip install beautifulsoup4
 from bs4 import BeautifulSoup
 #pip install pdfplumber
@@ -41,8 +40,7 @@ class Ressource:
             return "HTML"
             
         else :
-            self.type = "Non supporté"
-            return "Non supporté"
+            raise ValueError("Le document renseigné n'est ni un pdf, ni un html.")
 
         
     def text(self):
@@ -77,9 +75,7 @@ class Ressource:
             htmltext = '\n'.join(chunk for chunk in chunks if chunk)
             return htmltext
 
-        elif (self.type == "Non supporté"): ... #faire une fonction erreur
         else:
             #demande à l'utilisateur d'utiliser la fonction type avant afin d'avoir une valeur au self.type
-            print("Il faudrait faire la fonction type avant svp")
-            return 0
+            raise ArithmeticError("Veuillez faire le '.type' avant de faire le '.text'")
         
