@@ -85,65 +85,14 @@ class Prisme:
             for i in range (len(self.liens)):
                 t=Ressource(self.liens[i])
                 t=t.type()
-                if t=="HTML":
-                    def is_valid(url):
-                    
-                        parsed = urlparse(url)
-                        return bool(parsed.netloc) and bool(parsed.scheme)
-
-                    def get_all_images(url):
-                    
-                        soup = bs(requests.get(url).content, "html.parser")
-                        urls = []
-                        for img in tqdm(soup.find_all("img"), "Extracting images"):
-                            img_url = img.attrs.get("src")
-                            if not img_url:
-                            # if img does not contain src attribute, just skip
-                                continue
-                            # make the URL absolute by joining domain with the URL that is just extracted
-                            img_url = urljoin(url, img_url)
-                            try:
-                                pos = img_url.index("?")
-                                img_url = img_url[:pos]
-                            except ValueError:
-                                pass
-                            # finally, if the url is valid
-                            if is_valid(img_url):
-                                urls.append(img_url)
-                        return urls
-
-                    url_image=get_all_images(self.liens[i])
-
-                    k=1
-                    
-
-
+                if t=="HTML":                   
+                    url_image=Traitement.enregistrement_image_html(self.liens[i])
                     liste_url+=url_image
 
                 
                 
                 elif t=="PDF":
-                    r = requests.get(self.liens[i])
-                    pdf_content = r.content
-                    doc = fitz.open(stream=io.BytesIO(pdf_content),filetype='pdf')
-                    listeimage=[]
-                    for j in range(len(doc)):
-                        for img in doc.getPageImageList(i):
-                            xref = img[0]
-                            pix = fitz.Pixmap(doc, xref)
-                        
-                        if pix.n < 5:       # c'est GRAY or RGB
-                            pix.writePNG(f'{file_name}/document{i+1}_image_pdf{j}.jpg')
-                            listeimage.append(f'{file_name}/document{i+1}_image_pdf{j}.jpg')
-
-                        else:               # CMYK: convert to RGB first
-                            pix1 = fitz.Pixmap(fitz.csRGB, pix)
-                            pix1.writePNG(f'{file_name}/document{i+1}_image_pdf{j}.jpg')
-                            listeimage.append(f'{file_name}/document{i+1}_image_pdf{j}.jpg')
-                            pix1 = None
-                        pix = None
-                        
-                        liste_url+=listeimage
+                    liste_url+=Traitement.enregistrement_image_pdf(self.liens[i],file_name,i)
 
             Traitement.load_html(liste_url,file_name)
     

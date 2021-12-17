@@ -18,7 +18,7 @@ class Ressource:
 
     def __init__(self, url):
         """
-        theo ilyas et maxime lol
+        Lecture de l'url par request pris sur LE PROGRAMME D'ILYAS TASLI ET THEO LEGRUEL
         """
         self.url = url
 
