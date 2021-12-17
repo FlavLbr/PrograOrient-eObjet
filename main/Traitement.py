@@ -1,4 +1,5 @@
 #!/bin/env python3
+# LEBRETON Flavien / GERAULT Thomas 
 import os
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
@@ -12,12 +13,12 @@ import requests
 
 class Traitement:   
     """
-        Cette classe nous serre à traiter les documents html et pdf et à leurs extraire les images sur un document html.
+        Cette classe nous sert à traiter les documents html et pdf et à leurs extraire les images sur un document html.
     """ 
 
     def load_html(liste_image,file_name):
         """
-            On enregistre les images sur un document html que nous avons créé sur un repertoire demandé. 
+            On enregistre les images sur une page html que nous avons créé sur un repertoire demandé. 
         """
         Creation_fichier=Path(os.path.join(file_name,'Extraction_images_documents.html'))
         Creation_fichier.touch(exist_ok=True)

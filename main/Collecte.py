@@ -1,10 +1,11 @@
 #!/bin/env python3
+# LEBRETON Flavien / GERAULT Thomas 
 from Ressource import Ressource
 
 
 class Collecte:
     """
-    Collecte prend n liens HTML ou adresses de répertoire PDF, récupère les ressources en leurs extrayant leur texte 
+    Collecte prend n liens HTML ou PDF, récupère les ressources en leurs extrayant leur texte 
     et renvoie une liste de contenus sous forme d'un tableau de longueur n.
     """
 

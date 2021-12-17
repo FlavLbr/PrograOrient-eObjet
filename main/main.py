@@ -1,5 +1,5 @@
 #!/bin/env python3
-
+# LEBRETON Flavien / GERAULT Thomas 
 from Prisme import Prisme
 
 lien_fichier=input(f"\nBonjour à vous! Et bienvenue sur Prisme! \n\nPouvez-vous nous renseigner le lien du fichier où les urls sont enregistés (1 lien par ligne): ")

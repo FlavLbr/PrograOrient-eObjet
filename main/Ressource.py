@@ -1,7 +1,8 @@
 #!/bin/env python3
+# LEBRETON Flavien / GERAULT Thomas 
 #pip install beautifulsoup4
 from bs4 import BeautifulSoup
-#pip install pdfplumber
+#pip install pdfminer
 import requests
 from pdfminer.high_level import extract_text
 from io import BytesIO
@@ -11,8 +12,8 @@ from urllib.request import build_opener, HTTPCookieProcessor
 
 class Ressource:
     """ 
-    Ressource prend un lien pour un HTML ou un adresse de répertoire pour un pdf, retourne si c'est un PDF ou un HTML
-    avec la fonction type et retourne l'adresse sous forme dans texte avec la fonction text.   
+    Ressource prend un lien pour un HTML ou un pdf, retourne si c'est un PDF ou un HTML
+    avec la fonction type et retourne l'adresse sous forme d'un texte avec la fonction text.   
     """
 
     def __init__(self, url):
@@ -76,6 +77,5 @@ class Ressource:
             return htmltext
 
         else:
-            #demande à l'utilisateur d'utiliser la fonction type avant afin d'avoir une valeur au self.type
             raise ArithmeticError("Veuillez faire le '.type' avant de faire le '.text'")
         

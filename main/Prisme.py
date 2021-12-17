@@ -1,4 +1,5 @@
 #!/bin/env python3
+# LEBRETON Flavien / GERAULT Thomas 
 from wordcloud import WordCloud
 from Collecte import Collecte
 from Ressource import Ressource
@@ -9,7 +10,7 @@ import os
 class Prisme:
     """
         Prisme prend un fichier txt, traite les liens présent dans le ficher et en fait un nuage de mots ou
-        extrait  les images sur un fichier html ouvert ensuite sur une page web.
+        extrait  les images sur une page html ouvert ensuite sur une page web.
     """
 
     def __init__(self,type):
@@ -35,7 +36,7 @@ class Prisme:
     
     def show(self,lien,concatenation=None,nombre_mot_wordCloud=None):
         """
-            On extrait les mots sous un nuage de mots ou les images dans un fichier html.
+            On extrait les mots sous un nuage de mots ou les images dans une page html.
         """
         file_name=lien
 
@@ -71,7 +72,7 @@ class Prisme:
             else: raise ValueError("Veuillez bien écrire 'ON' ou 'OFF' s'il vous plaît.")
             
 
-        # On extrait les images sur un fichier html qui s'ouvre, à la fin, sur une page web. Nous avons fait le choix de différencier le 
+        # On extrait les images sur une page html qui s'ouvre, à la fin, sur une page web. Nous avons fait le choix de différencier le 
         # traitement entre les html et pdf.
         elif self.type=='Image' or self.type=='image':
             liste_url=[]
